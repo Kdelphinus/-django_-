@@ -3,7 +3,7 @@
 ## 강의 
 
 - Python Web Framework 중 하나인 Django의 기본 개념과 간단한 실습을 진행한다.
-- [강의 링크](https://opentutorials.org/course/4886)
+- 생활코딩의 [강의](https://opentutorials.org/course/4886) 를 따라가며 진행했다.
 
 ## 개발 환경
 
@@ -14,4 +14,4 @@
 
 ## 강의 내용 정리
 
-[reference](./reference) 폴더 안에 정리
+- [reference](./reference) 폴더 안에 정리
