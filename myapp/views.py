@@ -13,12 +13,13 @@ def html_template(article_tag: str, request_id: str = None) -> str:
     context_ui = (
         ""
         if request_id is None
-        else """<li>
+        else f"""<li>
                     <form action="/delete/" method="post">
                         <input type="hidden" name="id" value="{request_id}">
                         <input type="submit" value="delete">
                     </form>
-                </li>"""
+                </li>
+                <li><a href="/update/{request_id}">update</a></li>"""
     )
     ol = ""
     for topic in topics:
@@ -48,17 +49,6 @@ def index(request):
     return HttpResponse(html_template(article))
 
 
-def read(request, request_id: str):
-    global topics
-    for topic in topics:
-        if topic["id"] == int(request_id):
-            article_tag = f"""
-            <h2>{topic["title"]}</h2>
-            {topic["body"]}
-            """
-            return HttpResponse(html_template(article_tag, request_id))
-
-
 @csrf_exempt
 def create(request):
     if request.method == "GET":
@@ -76,6 +66,46 @@ def create(request):
         topics.append({"id": len(topics) + 1, "title": title, "body": body})
         url = "/read/" + str(len(topics))
         return redirect(url)
+
+
+def read(request, request_id: str):
+    global topics
+    for topic in topics:
+        if topic["id"] == int(request_id):
+            article_tag = f"""
+            <h2>{topic["title"]}</h2>
+            {topic["body"]}
+            """
+            return HttpResponse(html_template(article_tag, request_id))
+
+
+@csrf_exempt
+def update(request, request_id: str):
+    global topics
+    if request.method == "GET":
+        selected_topic = {"title": "", "body": ""}
+        for topic in topics:
+            if topic["id"] == int(request_id):
+                selected_topic["title"] = topic["title"]
+                selected_topic["body"] = topic["body"]
+                break
+        article = f"""
+            <form action="/update/{request_id}/" method="post">
+                <p><input type="text" name="title" placeholder="title" value={selected_topic["title"]}></p>
+                <p><textarea name="body" placeholder="body">{selected_topic["body"]}</textarea></p>
+                <p><input type="submit"></p>
+            </form>
+        """
+        return HttpResponse(html_template(article, request_id))
+    elif request.method == "POST":
+        title = request.POST["title"]
+        body = request.POST["body"]
+        for topic in topics:
+            if topic["id"] == int(request_id):
+                topic["title"] = title
+                topic["body"] = body
+                break
+        return redirect(f"/read/{request_id}")
 
 
 @csrf_exempt
