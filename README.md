@@ -15,3 +15,8 @@
 ## 강의 내용 정리
 
 - [reference](./reference) 폴더 안에 정리
+- 강의 후 더 공부해야 할 것
+    - DataBase
+    - Model
+    - Security
+    - Template Engine
