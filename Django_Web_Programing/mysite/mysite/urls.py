@@ -25,4 +25,6 @@ urlpatterns = [
     path("", views.index),
 ]
 
-handler404 = "mysite.views.error_404_view"
+# templates에 페이지가 있다면설정하지 않아도 자동으로 찾아간다.
+# handler404 = "mysite.views.error_404_view"
+# handler500 = "mysite.views.error_500_view"
