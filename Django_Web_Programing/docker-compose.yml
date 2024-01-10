@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   app:
+    image: kmj951015/django
     build:
       context: .
       args:
