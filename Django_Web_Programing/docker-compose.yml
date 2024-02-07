@@ -2,7 +2,9 @@ version: "3.9"
 
 services:
   app:
-    image: kmj951015/django
+    image: django
+    pull_policy: never
+    container_name: django
     build:
       context: .
       args:

@@ -1,4 +1,4 @@
-FROM python:3.12.0
+FROM python:3.12.1-alpine3.19
 
 # ensures that the python output
 # i.e. the stdout and stderr streams are sent straight to terminal
