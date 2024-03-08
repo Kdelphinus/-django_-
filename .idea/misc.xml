@@ -3,8 +3,7 @@
   <component name="Black">
     <option name="enabledOnReformat" value="true" />
     <option name="enabledOnSave" value="true" />
-    <option name="pathToExecutable" value="/usr/local/bin/black" />
-    <option name="sdkName" value="Python 3.12 (django_study)" />
+    <option name="sdkName" value="Python 3.12 (Django_Study)" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (Django_Study)" project-jdk-type="Python SDK" />
 </project>
